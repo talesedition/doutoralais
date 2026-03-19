@@ -1,3 +1,4 @@
+// script.js
 // ============================================
 // DRA. LAIS DE MELO - CIRURGIÃ DENTISTA
 // Professional JavaScript Functionality
@@ -62,19 +63,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelector('.nav-links');
     const navLinkItems = document.querySelectorAll('.nav-link');
 
-    mobileMenuBtn.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-    });
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+    }
 
     // Close mobile menu when clicking a link
     navLinkItems.forEach(link => {
         link.addEventListener('click', () => {
-            mobileMenuBtn.classList.remove('active');
-            navLinks.classList.remove('active');
+            if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+            if (navLinks) navLinks.classList.remove('active');
             document.body.style.overflow = '';
         });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (navLinks && navLinks.classList.contains('active')) {
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
     });
 
     // ============================================
@@ -175,99 +189,119 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.getElementById('nextBtn');
     const dots = document.querySelectorAll('.dot');
 
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-    let autoPlayInterval;
-    let touchStartX = 0;
-    let touchEndX = 0;
+    if (track && slides.length > 0) {
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        let autoPlayInterval;
+        let touchStartX = 0;
+        let touchEndX = 0;
 
-    function updateCarousel() {
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-        });
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
 
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex === totalSlides - 1;
-        prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
-        nextBtn.style.opacity = currentIndex === totalSlides - 1 ? '0.3' : '1';
-    }
-
-    function goToSlide(index) {
-        if (index < 0) index = 0;
-        if (index >= totalSlides) index = totalSlides - 1;
-        currentIndex = index;
-        updateCarousel();
-        resetAutoPlay();
-    }
-
-    prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-    nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => goToSlide(index));
-    });
-
-    // Touch events for swipe
-    const carouselWrapper = document.querySelector('.carousel-wrapper');
-
-    carouselWrapper.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    carouselWrapper.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
-
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                goToSlide(currentIndex + 1);
-            } else {
-                goToSlide(currentIndex - 1);
+            if (prevBtn) {
+                prevBtn.disabled = currentIndex === 0;
+                prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
+            }
+            
+            if (nextBtn) {
+                nextBtn.disabled = currentIndex === totalSlides - 1;
+                nextBtn.style.opacity = currentIndex === totalSlides - 1 ? '0.3' : '1';
             }
         }
-    }
 
-    // Auto-play
-    function startAutoPlay() {
-        autoPlayInterval = setInterval(() => {
-            if (currentIndex < totalSlides - 1) {
-                goToSlide(currentIndex + 1);
-            } else {
-                goToSlide(0);
+        function goToSlide(index) {
+            if (index < 0) index = 0;
+            if (index >= totalSlides) index = totalSlides - 1;
+            currentIndex = index;
+            updateCarousel();
+            resetAutoPlay();
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Touch events for swipe
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
+
+        if (carouselWrapper) {
+            carouselWrapper.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            carouselWrapper.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    goToSlide(currentIndex + 1);
+                } else {
+                    goToSlide(currentIndex - 1);
+                }
             }
-        }, 5000);
-    }
+        }
 
-    function resetAutoPlay() {
-        clearInterval(autoPlayInterval);
+        // Auto-play
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                if (currentIndex < totalSlides - 1) {
+                    goToSlide(currentIndex + 1);
+                } else {
+                    goToSlide(0);
+                }
+            }, 5000);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+
+        // Pause auto-play on hover
+        const carouselContainer = document.querySelector('.carousel-container');
+        
+        if (carouselContainer) {
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayInterval);
+            });
+
+            carouselContainer.addEventListener('mouseleave', startAutoPlay);
+        }
+
+        // Initialize
+        updateCarousel();
         startAutoPlay();
     }
 
-    // Pause auto-play on hover
-    const carouselContainer = document.querySelector('.carousel-container');
-    carouselContainer.addEventListener('mouseenter', () => {
-        clearInterval(autoPlayInterval);
-    });
-
-    carouselContainer.addEventListener('mouseleave', startAutoPlay);
-
-    // Initialize
-    updateCarousel();
-    startAutoPlay();
-
     // ============================================
-    // PARALLAX EFFECT
+    // PARALLAX EFFECT (Desktop only)
     // ============================================
     const parallaxElements = document.querySelectorAll('.shape, .hero-pattern');
 
     function handleParallax() {
+        // Only apply parallax on non-touch devices
+        if (window.matchMedia('(pointer: coarse)').matches) return;
+        
         const scrolled = window.pageYOffset;
 
         parallaxElements.forEach((el, index) => {
@@ -288,23 +322,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { passive: true });
 
     // ============================================
-    // MAGNETIC BUTTON EFFECT
+    // MAGNETIC BUTTON EFFECT (Desktop only)
     // ============================================
     const magneticButtons = document.querySelectorAll('.btn-primary, .btn-quote, .btn-cta-primary');
 
-    magneticButtons.forEach(button => {
-        button.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
+    if (!window.matchMedia('(pointer: coarse)').matches) {
+        magneticButtons.forEach(button => {
+            button.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
 
-            this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
-        });
+                this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
 
-        button.addEventListener('mouseleave', function() {
-            this.style.transform = '';
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
         });
-    });
+    }
 
     // ============================================
     // SPECIALTY CARDS HOVER EFFECT
@@ -361,6 +397,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     rippleButtons.forEach(button => {
         button.addEventListener('click', function(e) {
+            // Don't create ripple for disabled buttons
+            if (this.disabled) return;
+            
             const rect = this.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -381,11 +420,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 margin-top: -50px;
             `;
 
-            this.style.position = 'relative';
+            const originalPosition = getComputedStyle(this).position;
+            if (originalPosition === 'static') {
+                this.style.position = 'relative';
+            }
             this.style.overflow = 'hidden';
             this.appendChild(ripple);
 
-            setTimeout(() => ripple.remove(), 600);
+            setTimeout(() => {
+                ripple.remove();
+                if (originalPosition === 'static') {
+                    this.style.position = '';
+                }
+            }, 600);
         });
     });
 
@@ -408,6 +455,7 @@ document.addEventListener('DOMContentLoaded', function() {
     galleryImages.forEach(img => {
         img.addEventListener('error', function() {
             this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"%3E%3Crect fill="%23f0ebe5" width="400" height="300"/%3E%3Ctext fill="%23a89f97" font-family="Montserrat" font-size="16" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EImagem%3C/text%3E%3C/svg%3E';
+            this.style.opacity = '1';
         });
     });
 
@@ -447,3 +495,20 @@ function throttle(func, limit) {
         }
     };
 }
+
+// ============================================
+// RESIZE HANDLER
+// ============================================
+window.addEventListener('resize', debounce(() => {
+    // Close mobile menu on resize to desktop
+    if (window.innerWidth > 768) {
+        const navLinks = document.querySelector('.nav-links');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        
+        if (navLinks && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+}, 250));
