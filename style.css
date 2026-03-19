@@ -974,8 +974,18 @@ section {
     align-items: center;
     justify-content: center;
     color: var(--primary);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     transition: var(--transition-base);
+    flex-shrink: 0;
+    overflow: visible;
+}
+
+.feature-icon i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 .feature:hover .feature-icon {
@@ -2409,6 +2419,32 @@ a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 3px;
+}
+
+
+
+/* Correção para ícones em mobile */
+@media (max-width: 768px) {
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        font-size: 1.3rem;
+    }
+
+    .feature {
+        align-items: center;
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-icon {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        font-size: 1.2rem;
+    }
 }
 
 /* Reduced motion */
