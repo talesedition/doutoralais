@@ -1,4 +1,3 @@
-// script.js
 // ============================================
 // DRA. LAIS DE MELO - CIRURGIÃ DENTISTA
 // Professional JavaScript Functionality
@@ -179,6 +178,97 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize counters immediately
     animateCounters();
+
+    // ============================================
+    // RESULTS FILTER (Antes e Depois)
+    // ============================================
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const resultCards = document.querySelectorAll('.result-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            const filter = this.dataset.filter;
+
+            resultCards.forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden');
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        card.classList.add('hidden');
+                    }, 300);
+                }
+            });
+        });
+    });
+
+    // ============================================
+    // BEFORE/AFTER COMPARISON SLIDER
+    // ============================================
+    const comparisonSliders = document.querySelectorAll('.comparison-slider');
+
+    comparisonSliders.forEach(slider => {
+        const before = slider.querySelector('.comparison-before');
+        const after = slider.querySelector('.comparison-after');
+        const handle = slider.querySelector('.comparison-handle');
+        
+        let isDragging = false;
+
+        function updateSlider(x) {
+            const rect = slider.getBoundingClientRect();
+            let position = ((x - rect.left) / rect.width) * 100;
+            
+            // Clamp position between 0 and 100
+            position = Math.max(0, Math.min(100, position));
+            
+            after.style.width = position + '%';
+            handle.style.left = position + '%';
+        }
+
+        // Mouse events
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            updateSlider(e.clientX);
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            updateSlider(e.clientX);
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        // Touch events
+        slider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            updateSlider(e.touches[0].clientX);
+        }, { passive: true });
+
+        slider.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            updateSlider(e.touches[0].clientX);
+        }, { passive: true });
+
+        slider.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        // Initialize at 50%
+        after.style.width = '50%';
+        handle.style.left = '50%';
+    });
 
     // ============================================
     // CAROUSEL FUNCTIONALITY

@@ -1,4 +1,3 @@
-/* style.css */
 /* ============================================
    DRA. LAIS DE MELO - CIRURGIÃ DENTISTA
    Professional Rose Gold & White Theme
@@ -805,6 +804,15 @@ section {
     overflow-wrap: break-word;
 }
 
+.section-subtitle {
+    color: var(--gray-600);
+    font-size: 1.1rem;
+    margin-top: 15px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .section-title .highlight {
     background: linear-gradient(135deg, var(--primary) 0%, var(--rose) 100%);
     -webkit-background-clip: text;
@@ -1199,6 +1207,267 @@ section {
 .specialty-card:hover .specialty-hover {
     opacity: 1;
     transform: translateX(0);
+}
+
+/* ============================================
+   RESULTS SECTION - ANTES E DEPOIS
+   ============================================ */
+
+.results {
+    background: linear-gradient(135deg, var(--gray-100) 0%, var(--cream) 100%);
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.results::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: var(--rose-light);
+    border-radius: 50%;
+    opacity: 0.4;
+    filter: blur(100px);
+}
+
+.results-filter {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.filter-btn {
+    background: var(--white);
+    border: 2px solid var(--gray-200);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    cursor: pointer;
+    transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--rose) 100%);
+    border-color: transparent;
+    color: var(--white);
+    box-shadow: 0 5px 20px rgba(212, 165, 116, 0.4);
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 35px;
+    width: 100%;
+}
+
+.result-card {
+    background: var(--white);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-base);
+    border: 1px solid var(--gray-200);
+    opacity: 1;
+    transform: scale(1);
+}
+
+.result-card.hidden {
+    display: none;
+}
+
+.result-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary);
+}
+
+.result-header {
+    padding: 25px 25px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.result-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+.result-tag {
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(232, 180, 184, 0.1) 100%);
+    color: var(--primary);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.comparison-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background: var(--gray-200);
+}
+
+.comparison-container.static {
+    height: auto;
+}
+
+.comparison-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: ew-resize;
+}
+
+.comparison-before,
+.comparison-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.comparison-before img,
+.comparison-after img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+}
+
+.comparison-after {
+    width: 50%;
+    border-right: 3px solid var(--white);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    z-index: 2;
+    background: var(--white);
+}
+
+.comparison-label {
+    position: absolute;
+    bottom: 20px;
+    background: rgba(0,0,0,0.7);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.comparison-before .comparison-label {
+    left: 20px;
+}
+
+.comparison-after .comparison-label {
+    right: 20px;
+    background: var(--primary);
+}
+
+.comparison-handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    z-index: 3;
+    cursor: ew-resize;
+    border: 4px solid var(--primary);
+    transition: var(--transition-base);
+}
+
+.comparison-handle:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+.comparison-handle i {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+/* Static comparison for single images */
+.static-comparison {
+    padding: 20px;
+}
+
+.static-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.static-item img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+.static-label {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--rose) 100%);
+    color: var(--white);
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: var(--shadow-md);
+    white-space: nowrap;
+}
+
+.result-info {
+    padding: 20px 25px 25px;
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    line-height: 1.6;
 }
 
 /* ============================================
@@ -2231,6 +2500,10 @@ section {
     .quote-card {
         padding: 50px 40px;
     }
+
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
@@ -2352,6 +2625,12 @@ section {
         margin: 0 auto;
     }
 
+    .results-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
     .quote-card {
         padding: 40px 25px;
     }
@@ -2401,6 +2680,19 @@ section {
     
     .carousel-slide {
         padding: 0 5px;
+    }
+
+    .comparison-container {
+        height: 250px;
+    }
+
+    .results-filter {
+        gap: 10px;
+    }
+
+    .filter-btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
     }
 }
 
@@ -2519,6 +2811,22 @@ section {
     .image-main,
     .image-secondary {
         width: 100%;
+    }
+
+    .comparison-container {
+        height: 200px;
+    }
+
+    .result-header {
+        padding: 20px 20px 10px;
+    }
+
+    .result-header h3 {
+        font-size: 1rem;
+    }
+
+    .static-item img {
+        height: 200px;
     }
 }
 
