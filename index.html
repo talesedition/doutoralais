@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <base target="_blank">
-<base target="_blank">
 </head>
 <body>
     <!-- Progress Bar -->
@@ -203,6 +202,233 @@
         </div>
     </section>
 
+    <!-- Results Section - Antes e Depois -->
+    <section id="resultados" class="results">
+        <div class="container">
+            <div class="section-header" data-reveal="up">
+                <span class="section-tag">Resultados Reais</span>
+                <h2 class="section-title">Antes e <span class="highlight">Depois</span></h2>
+                <p class="section-subtitle">Passe o mouse ou arraste para ver a transformação.</p>
+            </div>
+
+            <div class="results-filter" data-reveal="up" data-delay="100">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="facetas">Facetas</button>
+                <button class="filter-btn" data-filter="restauracoes">Restaurações</button>
+                <button class="filter-btn" data-filter="coroas">Coroas</button>
+                <button class="filter-btn" data-filter="implantes">Implantes</button>
+            </div>
+
+            <div class="results-grid compact">
+                <!-- Facetas em Resina 1 -->
+                <div class="result-card" data-category="facetas" data-reveal="up" data-delay="0">
+                    <div class="result-header">
+                        <h3>Facetas em Resina</h3>
+                        <span class="result-tag">Estética</span>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-slider">
+                            <div class="comparison-before">
+                                <img src="img/01_facetas_em_resina_antes.jpeg" alt="Antes das facetas">
+                                <span class="comparison-label label-before">Antes</span>
+                            </div>
+                            <div class="comparison-after">
+                                <img src="img/01_facetas_em_resina_depois.jpeg" alt="Depois das facetas">
+                                <span class="comparison-label label-after">Depois</span>
+                            </div>
+                            <div class="comparison-handle">
+                                <i class="fas fa-arrows-alt-h"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restauração Estética 1 -->
+                <div class="result-card" data-category="restauracoes" data-reveal="up" data-delay="100">
+                    <div class="result-header">
+                        <h3>Restauração Estética</h3>
+                        <span class="result-tag">Reconstrução</span>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-slider">
+                            <div class="comparison-before">
+                                <img src="img/01_restauração_estética_em_resina_composta_antes.jpeg" alt="Antes restauração">
+                                <span class="comparison-label label-before">Antes</span>
+                            </div>
+                            <div class="comparison-after">
+                                <img src="img/01_restauração_estética_em_resina_composta_depois.jpeg" alt="Depois restauração">
+                                <span class="comparison-label label-after">Depois</span>
+                            </div>
+                            <div class="comparison-handle">
+                                <i class="fas fa-arrows-alt-h"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coroa Total em Cerâmica -->
+                <div class="result-card" data-category="coroas" data-reveal="up" data-delay="200">
+                    <div class="result-header">
+                        <h3>Coroa em Cerâmica</h3>
+                        <span class="result-tag">Prótese Fixa</span>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-slider">
+                            <div class="comparison-before">
+                                <img src="img/01_coroa_total_em_cerâmica_antes.jpeg" alt="Antes coroa">
+                                <span class="comparison-label label-before">Antes</span>
+                            </div>
+                            <div class="comparison-after">
+                                <img src="img/01_coroa_total_em_cerâmica_depois.jpeg" alt="Depois coroa">
+                                <span class="comparison-label label-after">Depois</span>
+                            </div>
+                            <div class="comparison-handle">
+                                <i class="fas fa-arrows-alt-h"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Implantes - Coroas Unitárias -->
+                <div class="result-card" data-category="implantes" data-reveal="up" data-delay="300">
+                    <div class="result-header">
+                        <h3>Coroas sobre Implantes</h3>
+                        <span class="result-tag">Implantodontia</span>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-slider">
+                            <div class="comparison-before">
+                                <img src="img/01_coroas_unitárias_sobre_implantes_antes.jpeg" alt="Antes implante">
+                                <span class="comparison-label label-before">Antes</span>
+                            </div>
+                            <div class="comparison-after">
+                                <img src="img/01_coroas_unitárias_sobre_implantes_depois.jpeg" alt="Depois implante">
+                                <span class="comparison-label label-after">Depois</span>
+                            </div>
+                            <div class="comparison-handle">
+                                <i class="fas fa-arrows-alt-h"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco em Resina -->
+                <div class="result-card" data-category="restauracoes" data-reveal="up" data-delay="400">
+                    <div class="result-header">
+                        <h3>Restauração Posterior</h3>
+                        <span class="result-tag">Resina</span>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-slider">
+                            <div class="comparison-before">
+                                <img src="img/01_bloco_em_resina_antes.jpeg" alt="Antes resina">
+                                <span class="comparison-label label-before">Antes</span>
+                            </div>
+                            <div class="comparison-after">
+                                <img src="img/01_bloco_em_resina_depois.jpeg" alt="Depois resina">
+                                <span class="comparison-label label-after">Depois</span>
+                            </div>
+                            <div class="comparison-handle">
+                                <i class="fas fa-arrows-alt-h"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Facetas em Resina 2 -->
+                <div class="result-card" data-category="facetas" data-reveal="up" data-delay="500">
+                    <div class="result-header">
+                        <h3>Facetas - Caso 2</h3>
+                        <span class="result-tag">Estética</span>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-slider">
+                            <div class="comparison-before">
+                                <img src="img/02_facetas_em_resina_antes.jpeg" alt="Antes facetas 2">
+                                <span class="comparison-label label-before">Antes</span>
+                            </div>
+                            <div class="comparison-after">
+                                <img src="img/02_facetas_em_resina_depois.jpeg" alt="Depois facetas 2">
+                                <span class="comparison-label label-after">Depois</span>
+                            </div>
+                            <div class="comparison-handle">
+                                <i class="fas fa-arrows-alt-h"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-more" data-reveal="up" data-delay="600">
+                <button class="btn-show-more" id="showMoreResults">
+                    <span>Ver Mais Resultados</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+
+            <div class="results-grid additional hidden" id="additionalResults">
+                <div class="result-card" data-category="restauracoes">
+                    <div class="result-header">
+                        <h3>Restauração - Caso 2</h3>
+                        <span class="result-tag">Reconstrução</span>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-slider">
+                            <div class="comparison-before">
+                                <img src="img/02_restauração_estética_em_resina_composta_antes.jpeg" alt="Antes">
+                                <span class="comparison-label label-before">Antes</span>
+                            </div>
+                            <div class="comparison-after">
+                                <img src="img/02_restauração_estética_em_resina_composta_depois.jpeg" alt="Depois">
+                                <span class="comparison-label label-after">Depois</span>
+                            </div>
+                            <div class="comparison-handle">
+                                <i class="fas fa-arrows-alt-h"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-card" data-category="restauracoes">
+                    <div class="result-header">
+                        <h3>Restauração - Caso 3</h3>
+                        <span class="result-tag">Reconstrução</span>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-slider">
+                            <div class="comparison-before">
+                                <img src="img/03_restauração_estética_em_resina_composta_antes.jpeg" alt="Antes">
+                                <span class="comparison-label label-before">Antes</span>
+                            </div>
+                            <div class="comparison-after">
+                                <img src="img/03_restauração_estética_em_resina_composta_depois.jpeg" alt="Depois">
+                                <span class="comparison-label label-after">Depois</span>
+                            </div>
+                            <div class="comparison-handle">
+                                <i class="fas fa-arrows-alt-h"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-card" data-category="coroas">
+                    <div class="result-header">
+                        <h3>Blocos em Cerâmica</h3>
+                        <span class="result-tag">CAD/CAM</span>
+                    </div>
+                    <div class="comparison-container static">
+                        <div class="static-comparison">
+                            <div class="static-item">
+                                <img src="img/blocos_em_ceramica.jpeg" alt="Blocos cerâmica">
+                                <span class="static-label">Modelos Cerâmicos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Specialties Section -->
     <section id="especialidades" class="specialties">
         <div class="container">
@@ -217,7 +443,7 @@
                     </div>
                     <div class="specialty-content">
                         <h3>Implantes</h3>
-                        <p>Reposição de dentes perdidos com implantes de titânio de alta qualidade.</p>
+                        <p>Reposição de dentes perdidos com implantes de titânio.</p>
                     </div>
                     <div class="specialty-hover">
                         <i class="fas fa-arrow-right"></i>
@@ -229,7 +455,7 @@
                     </div>
                     <div class="specialty-content">
                         <h3>Facetas em Resina</h3>
-                        <p>Transforme seu sorriso com facetas estéticas de resina composta.</p>
+                        <p>Transforme seu sorriso com facetas estéticas.</p>
                     </div>
                     <div class="specialty-hover">
                         <i class="fas fa-arrow-right"></i>
@@ -241,7 +467,7 @@
                     </div>
                     <div class="specialty-content">
                         <h3>Prótese Total</h3>
-                        <p>Próteses completas modernas e confortáveis para reposição total.</p>
+                        <p>Próteses completas modernas e confortáveis.</p>
                     </div>
                     <div class="specialty-hover">
                         <i class="fas fa-arrow-right"></i>
@@ -253,7 +479,7 @@
                     </div>
                     <div class="specialty-content">
                         <h3>Prótese Fixa</h3>
-                        <p>Coroas e pontes fixas para restauração estética e funcional.</p>
+                        <p>Coroas e pontes fixas estéticas.</p>
                     </div>
                     <div class="specialty-hover">
                         <i class="fas fa-arrow-right"></i>
@@ -265,7 +491,7 @@
                     </div>
                     <div class="specialty-content">
                         <h3>Clareamento</h3>
-                        <p>Deixe seus dentes mais brancos e brilhantes com nossos tratamentos.</p>
+                        <p>Dentes mais brancos e brilhantes.</p>
                     </div>
                     <div class="specialty-hover">
                         <i class="fas fa-arrow-right"></i>
@@ -277,7 +503,7 @@
                     </div>
                     <div class="specialty-content">
                         <h3>Limpeza</h3>
-                        <p>Profilaxia profissional para manter sua saúde bucal em dia.</p>
+                        <p>Profilaxia profissional.</p>
                     </div>
                     <div class="specialty-hover">
                         <i class="fas fa-arrow-right"></i>
@@ -289,7 +515,7 @@
                     </div>
                     <div class="specialty-content">
                         <h3>Cirurgia de Siso</h3>
-                        <p>Extração de dentes do siso com segurança e conforto.</p>
+                        <p>Extração com segurança e conforto.</p>
                     </div>
                     <div class="specialty-hover">
                         <i class="fas fa-arrow-right"></i>
@@ -297,357 +523,14 @@
                 </div>
                 <div class="specialty-card" data-reveal="up" data-delay="350">
                     <div class="specialty-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <div class="specialty-content">
-                        <h3>Extração</h3>
-                        <p>Extrações dentárias realizadas com técnicas minimamente invasivas.</p>
-                    </div>
-                    <div class="specialty-hover">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                </div>
-                <div class="specialty-card" data-reveal="up" data-delay="400">
-                    <div class="specialty-icon">
                         <i class="fas fa-fill-drip"></i>
                     </div>
                     <div class="specialty-content">
                         <h3>Restaurações</h3>
-                        <p>Restaurações estéticas com resina de alta qualidade.</p>
+                        <p>Resina de alta qualidade.</p>
                     </div>
                     <div class="specialty-hover">
                         <i class="fas fa-arrow-right"></i>
-                    </div>
-                </div>
-                <div class="specialty-card" data-reveal="up" data-delay="450">
-                    <div class="specialty-icon">
-                        <i class="fas fa-procedures"></i>
-                    </div>
-                    <div class="specialty-content">
-                        <h3>Endodontia</h3>
-                        <p>Tratamento de canal com precisão e tecnologia avançada.</p>
-                    </div>
-                    <div class="specialty-hover">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Results Section - Antes e Depois -->
-    <section id="resultados" class="results">
-        <div class="container">
-            <div class="section-header" data-reveal="up">
-                <span class="section-tag">Resultados Reais</span>
-                <h2 class="section-title">Antes e <span class="highlight">Depois</span></h2>
-                <p class="section-subtitle">Transformações reais de pacientes. Arraste para comparar.</p>
-            </div>
-
-            <div class="results-filter" data-reveal="up" data-delay="100">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="facetas">Facetas em Resina</button>
-                <button class="filter-btn" data-filter="restauracoes">Restaurações</button>
-                <button class="filter-btn" data-filter="coroas">Coroas Cerâmica</button>
-                <button class="filter-btn" data-filter="implantes">Implantes</button>
-            </div>
-
-            <div class="results-grid">
-                <!-- Facetas em Resina 1 -->
-                <div class="result-card" data-category="facetas" data-reveal="up" data-delay="0">
-                    <div class="result-header">
-                        <h3>Facetas em Resina Composta</h3>
-                        <span class="result-tag">Estética</span>
-                    </div>
-                    <div class="comparison-container">
-                        <div class="comparison-slider">
-                            <div class="comparison-before">
-                                <img src="img/01_facetas_em_resina_antes.jpeg" alt="Antes das facetas">
-                                <span class="comparison-label">Antes</span>
-                            </div>
-                            <div class="comparison-after">
-                                <img src="img/01_facetas_em_resina_depois.jpeg" alt="Depois das facetas">
-                                <span class="comparison-label">Depois</span>
-                            </div>
-                            <div class="comparison-handle">
-                                <i class="fas fa-arrows-alt-h"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <p>Transformação completa do sorriso com facetas de resina composta, corrigindo formato e cor dos dentes.</p>
-                    </div>
-                </div>
-
-                <!-- Facetas em Resina 2 -->
-                <div class="result-card" data-category="facetas" data-reveal="up" data-delay="100">
-                    <div class="result-header">
-                        <h3>Facetas em Resina - Caso 2</h3>
-                        <span class="result-tag">Estética</span>
-                    </div>
-                    <div class="comparison-container">
-                        <div class="comparison-slider">
-                            <div class="comparison-before">
-                                <img src="img/02_facetas_em_resina_antes.jpeg" alt="Antes facetas caso 2">
-                                <span class="comparison-label">Antes</span>
-                            </div>
-                            <div class="comparison-after">
-                                <img src="img/02_facetas_em_resina_depois.jpeg" alt="Depois facetas caso 2">
-                                <span class="comparison-label">Depois</span>
-                            </div>
-                            <div class="comparison-handle">
-                                <i class="fas fa-arrows-alt-h"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <p>Harmonização do sorriso com facetas de resina, proporcionando naturalidade e beleza.</p>
-                    </div>
-                </div>
-
-                <!-- Restauração Estética 1 -->
-                <div class="result-card" data-category="restauracoes" data-reveal="up" data-delay="200">
-                    <div class="result-header">
-                        <h3>Restauração Estética - Caso 1</h3>
-                        <span class="result-tag">Reconstrução</span>
-                    </div>
-                    <div class="comparison-container">
-                        <div class="comparison-slider">
-                            <div class="comparison-before">
-                                <img src="img/01_restauração_estética_em_resina_composta_antes.jpeg" alt="Antes restauração 1">
-                                <span class="comparison-label">Antes</span>
-                            </div>
-                            <div class="comparison-after">
-                                <img src="img/01_restauração_estética_em_resina_composta_depois.jpeg" alt="Depois restauração 1">
-                                <span class="comparison-label">Depois</span>
-                            </div>
-                            <div class="comparison-handle">
-                                <i class="fas fa-arrows-alt-h"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <p>Reconstrução estética com resina composta de alta qualidade, restaurando a anatomia natural.</p>
-                    </div>
-                </div>
-
-                <!-- Restauração Estética 2 -->
-                <div class="result-card" data-category="restauracoes" data-reveal="up" data-delay="300">
-                    <div class="result-header">
-                        <h3>Restauração Estética - Caso 2</h3>
-                        <span class="result-tag">Reconstrução</span>
-                    </div>
-                    <div class="comparison-container">
-                        <div class="comparison-slider">
-                            <div class="comparison-before">
-                                <img src="img/02_restauração_estética_em_resina_composta_antes.jpeg" alt="Antes restauração 2">
-                                <span class="comparison-label">Antes</span>
-                            </div>
-                            <div class="comparison-after">
-                                <img src="img/02_restauração_estética_em_resina_composta_depois.jpeg" alt="Depois restauração 2">
-                                <span class="comparison-label">Depois</span>
-                            </div>
-                            <div class="comparison-handle">
-                                <i class="fas fa-arrows-alt-h"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <p>Correção de desgaste dentário e restauração da anatomia natural do sorriso.</p>
-                    </div>
-                </div>
-
-                <!-- Restauração Estética 3 -->
-                <div class="result-card" data-category="restauracoes" data-reveal="up" data-delay="400">
-                    <div class="result-header">
-                        <h3>Restauração Estética - Caso 3</h3>
-                        <span class="result-tag">Reconstrução</span>
-                    </div>
-                    <div class="comparison-container">
-                        <div class="comparison-slider">
-                            <div class="comparison-before">
-                                <img src="img/03_restauração_estética_em_resina_composta_antes.jpeg" alt="Antes restauração 3">
-                                <span class="comparison-label">Antes</span>
-                            </div>
-                            <div class="comparison-after">
-                                <img src="img/03_restauração_estética_em_resina_composta_depois.jpeg" alt="Depois restauração 3">
-                                <span class="comparison-label">Depois</span>
-                            </div>
-                            <div class="comparison-handle">
-                                <i class="fas fa-arrows-alt-h"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <p>Restauração estética anterior com resina composta, devolvendo a confiança no sorriso.</p>
-                    </div>
-                </div>
-
-                <!-- Restauração Estética 4 -->
-                <div class="result-card" data-category="restauracoes" data-reveal="up" data-delay="500">
-                    <div class="result-header">
-                        <h3>Restauração Estética - Caso 4</h3>
-                        <span class="result-tag">Reconstrução</span>
-                    </div>
-                    <div class="comparison-container">
-                        <div class="comparison-slider">
-                            <div class="comparison-before">
-                                <img src="img/04_restauração_estética_em_resina_composta_antes.jpeg" alt="Antes restauração 4">
-                                <span class="comparison-label">Antes</span>
-                            </div>
-                            <div class="comparison-after">
-                                <img src="img/04_restauração_estética_em_resina_composta_depois.jpeg" alt="Depois restauração 4">
-                                <span class="comparison-label">Depois</span>
-                            </div>
-                            <div class="comparison-handle">
-                                <i class="fas fa-arrows-alt-h"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <p>Reconstrução completa com resina composta estética de alta performance.</p>
-                    </div>
-                </div>
-
-                <!-- Restauração Estética 5 -->
-                <div class="result-card" data-category="restauracoes" data-reveal="up" data-delay="600">
-                    <div class="result-header">
-                        <h3>Restauração Estética - Caso 5</h3>
-                        <span class="result-tag">Reconstrução</span>
-                    </div>
-                    <div class="comparison-container">
-                        <div class="comparison-slider">
-                            <div class="comparison-before">
-                                <img src="img/05_restauração_estética_em_resina_composta_antes.jpeg" alt="Antes restauração 5">
-                                <span class="comparison-label">Antes</span>
-                            </div>
-                            <div class="comparison-after">
-                                <img src="img/05_restauração_estética_em_resina_composta_depois.jpeg" alt="Depois restauração 5">
-                                <span class="comparison-label">Depois</span>
-                            </div>
-                            <div class="comparison-handle">
-                                <i class="fas fa-arrows-alt-h"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <p>Transformação do sorriso com restaurações estéticas em resina composta.</p>
-                    </div>
-                </div>
-
-                <!-- Coroa Total em Cerâmica -->
-                <div class="result-card" data-category="coroas" data-reveal="up" data-delay="700">
-                    <div class="result-header">
-                        <h3>Coroa Total em Cerâmica</h3>
-                        <span class="result-tag">Prótese Fixa</span>
-                    </div>
-                    <div class="comparison-container">
-                        <div class="comparison-slider">
-                            <div class="comparison-before">
-                                <img src="img/01_coroa_total_em_cerâmica_antes.jpeg" alt="Antes coroa cerâmica">
-                                <span class="comparison-label">Antes</span>
-                            </div>
-                            <div class="comparison-after">
-                                <img src="img/01_coroa_total_em_cerâmica_depois.jpeg" alt="Depois coroa cerâmica">
-                                <span class="comparison-label">Depois</span>
-                            </div>
-                            <div class="comparison-handle">
-                                <i class="fas fa-arrows-alt-h"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <p>Substituição por coroa total em cerâmica estética, proporcionando naturalidade e durabilidade.</p>
-                    </div>
-                </div>
-
-                <!-- Blocos em Cerâmica -->
-                <div class="result-card" data-category="coroas" data-reveal="up" data-delay="800">
-                    <div class="result-header">
-                        <h3>Blocos em Cerâmica</h3>
-                        <span class="result-tag">CAD/CAM</span>
-                    </div>
-                    <div class="comparison-container static">
-                        <div class="static-comparison">
-                            <div class="static-item">
-                                <img src="img/blocos_em_ceramica.jpeg" alt="Blocos cerâmica">
-                                <span class="static-label">Modelos Cerâmicos</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <p>Confecção de coroas cerâmicas com tecnologia CAD/CAM para máxima precisão.</p>
-                    </div>
-                </div>
-
-                <!-- Implantes - Coroas Unitárias -->
-                <div class="result-card" data-category="implantes" data-reveal="up" data-delay="900">
-                    <div class="result-header">
-                        <h3>Coroas Unitárias sobre Implantes</h3>
-                        <span class="result-tag">Implantodontia</span>
-                    </div>
-                    <div class="comparison-container">
-                        <div class="comparison-slider">
-                            <div class="comparison-before">
-                                <img src="img/01_coroas_unitárias_sobre_implantes_antes.jpeg" alt="Antes implante">
-                                <span class="comparison-label">Antes</span>
-                            </div>
-                            <div class="comparison-after">
-                                <img src="img/01_coroas_unitárias_sobre_implantes_depois.jpeg" alt="Depois implante">
-                                <span class="comparison-label">Depois</span>
-                            </div>
-                            <div class="comparison-handle">
-                                <i class="fas fa-arrows-alt-h"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <p>Reposição de dentes ausentes com implantes e coroas unitárias em porcelana.</p>
-                    </div>
-                </div>
-
-                <!-- Implantes - Modelo Laboratorial -->
-                <div class="result-card" data-category="implantes" data-reveal="up" data-delay="1000">
-                    <div class="result-header">
-                        <h3>Coroas sobre Implantes</h3>
-                        <span class="result-tag">Porcelana</span>
-                    </div>
-                    <div class="comparison-container static">
-                        <div class="static-comparison">
-                            <div class="static-item">
-                                <img src="img/coroas_unitarias_sobre_implantes_em_porcelana.jpeg" alt="Coroas implantes">
-                                <span class="static-label">Trabalho Laboratorial</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <p>Coroas unitárias confeccionadas em porcelana para reposição sobre implantes.</p>
-                    </div>
-                </div>
-
-                <!-- Bloco em Resina -->
-                <div class="result-card" data-category="restauracoes" data-reveal="up" data-delay="1100">
-                    <div class="result-header">
-                        <h3>Restauração em Resina Composta</h3>
-                        <span class="result-tag">Posterior</span>
-                    </div>
-                    <div class="comparison-container">
-                        <div class="comparison-slider">
-                            <div class="comparison-before">
-                                <img src="img/01_bloco_em_resina_antes.jpeg" alt="Antes resina posterior">
-                                <span class="comparison-label">Antes</span>
-                            </div>
-                            <div class="comparison-after">
-                                <img src="img/01_bloco_em_resina_depois.jpeg" alt="Depois resina posterior">
-                                <span class="comparison-label">Depois</span>
-                            </div>
-                            <div class="comparison-handle">
-                                <i class="fas fa-arrows-alt-h"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result-info">
-                        <p>Restauração de dentes posteriores com resina composta, restaurando função mastigatória.</p>
                     </div>
                 </div>
             </div>
@@ -676,7 +559,7 @@
                                             <div class="gallery-content">
                                                 <span class="gallery-tag">Procedimentos</span>
                                                 <h4>Cirurgia e Procedimentos</h4>
-                                                <p>Realizados com máxima precisão e cuidado</p>
+                                                <p>Realizados com máxima precisão</p>
                                             </div>
                                         </div>
                                     </div>
@@ -690,7 +573,7 @@
                                             <div class="gallery-content">
                                                 <span class="gallery-tag">Atendimento</span>
                                                 <h4>Atendimento Personalizado</h4>
-                                                <p>Cada paciente é único e especial</p>
+                                                <p>Cada paciente é único</p>
                                             </div>
                                         </div>
                                     </div>
@@ -699,12 +582,12 @@
                             <div class="carousel-slide">
                                 <div class="gallery-card">
                                     <div class="gallery-image">
-                                        <img src="img/06.jpeg" alt="Aplicação de anestesia" loading="lazy">
+                                        <img src="img/06.jpeg" alt="Tecnologia" loading="lazy">
                                         <div class="gallery-overlay">
                                             <div class="gallery-content">
                                                 <span class="gallery-tag">Tecnologia</span>
                                                 <h4>Tecnologia Avançada</h4>
-                                                <p>Equipamentos modernos e atualizados</p>
+                                                <p>Equipamentos modernos</p>
                                             </div>
                                         </div>
                                     </div>
@@ -713,12 +596,12 @@
                             <div class="carousel-slide">
                                 <div class="gallery-card">
                                     <div class="gallery-image">
-                                        <img src="img/07.jpeg" alt="Dra. Lais no consultório" loading="lazy">
+                                        <img src="img/07.jpeg" alt="Consultório" loading="lazy">
                                         <div class="gallery-overlay">
                                             <div class="gallery-content">
                                                 <span class="gallery-tag">Estrutura</span>
                                                 <h4>Consultório Moderno</h4>
-                                                <p>Ambiente acolhedor e seguro</p>
+                                                <p>Ambiente acolhedor</p>
                                             </div>
                                         </div>
                                     </div>
@@ -764,8 +647,7 @@
                         <i class="fas fa-quote-left"></i>
                     </div>
                     <p class="testimonial-text">
-                        "A Dra. Lais é simplesmente incrível! Fiz implantes e o resultado superou todas as minhas expectativas. 
-                        Atendimento excelente e muito profissional."
+                        "A Dra. Lais é simplesmente incrível! Fiz implantes e o resultado superou todas as minhas expectativas."
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">
@@ -773,7 +655,7 @@
                         </div>
                         <div class="author-info">
                             <span class="author-name">Maria Silva</span>
-                            <span class="author-treatment">Implantes Dentários</span>
+                            <span class="author-treatment">Implantes</span>
                         </div>
                     </div>
                 </div>
@@ -789,8 +671,7 @@
                         <i class="fas fa-quote-left"></i>
                     </div>
                     <p class="testimonial-text">
-                        "Fiz clareamento e facetas com a Dra. Lais. Meu sorriso mudou completamente! 
-                        Recomendo a todos que buscam qualidade e bom atendimento."
+                        "Fiz clareamento e facetas. Meu sorriso mudou completamente! Recomendo a todos."
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
@@ -814,8 +695,7 @@
                         <i class="fas fa-quote-left"></i>
                     </div>
                     <p class="testimonial-text">
-                        "Tirei meus sisos com a Dra. Lais e foi uma experiência muito tranquila. 
-                        Profissional competente e que transmite muita confiança."
+                        "Tirei meus sisos e foi uma experiência muito tranquila. Profissional competente."
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
@@ -831,8 +711,8 @@
         </div>
     </section>
 
-    <!-- Quote Section -->
-    <section class="quote-section">
+    <!-- Quote Section / Agendamento -->
+    <section id="agendamento" class="quote-section">
         <div class="container">
             <div class="section-header" data-reveal="up">
                 <span class="section-tag">Orçamento</span>
@@ -847,8 +727,7 @@
                 </div>
                 <p class="quote-description">
                     Cada sorriso é único e merece um tratamento personalizado. 
-                    Entre em contato para agendarmos uma avaliação e apresentarmos 
-                    o melhor plano de tratamento para você.
+                    Entre em contato para agendarmos uma avaliação.
                 </p>
                 <div class="quote-benefits">
                     <div class="quote-benefit" data-reveal="up" data-delay="300">
@@ -940,7 +819,7 @@
                         </div>
                         <span class="logo-main">DRA. LAIS DE MELO</span>
                     </div>
-                    <p>Cirurgiã Dentista dedicada a transformar sorrisos com excelência, carinho e tecnologia de ponta.</p>
+                    <p>Cirurgiã Dentista dedicada a transformar sorrisos com excelência.</p>
                     <div class="footer-social">
                         <a href="#" class="social-link" aria-label="Facebook">
                             <i class="fab fa-facebook-f"></i>
@@ -956,11 +835,10 @@
                 <div class="footer-links" data-reveal="up" data-delay="100">
                     <h4>Links Rápidos</h4>
                     <ul>
-                        <li><a href="#sobre">Sobre a Dra. Lais</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
                         <li><a href="#especialidades">Especialidades</a></li>
                         <li><a href="#resultados">Resultados</a></li>
-                        <li><a href="#servicos">Serviços</a></li>
-                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#agendamento">Agendamento</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact" data-reveal="up" data-delay="200">
@@ -974,25 +852,17 @@
                             <i class="fab fa-whatsapp"></i>
                             <a href="https://wa.me/5522981071066">WhatsApp</a>
                         </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:contato@drlaisdemelo.com">contato@drlaisdemelo.com</a>
-                        </li>
                     </ul>
                 </div>
                 <div class="footer-hours" data-reveal="up" data-delay="300">
-                    <h4>Horário de Atendimento</h4>
+                    <h4>Horário</h4>
                     <ul>
                         <li>
                             <span>Segunda a Sexta</span>
                             <span>08h às 18h</span>
                         </li>
                         <li>
-                            <span>Sábado</span>
-                            <span>Fechado</span>
-                        </li>
-                        <li>
-                            <span>Domingo</span>
+                            <span>Sábado e Domingo</span>
                             <span>Fechado</span>
                         </li>
                     </ul>
@@ -1009,6 +879,12 @@
         <i class="fab fa-whatsapp"></i>
         <span class="whatsapp-pulse"></span>
         <span class="whatsapp-tooltip">Agende sua consulta!</span>
+    </a>
+
+    <!-- Scroll to Appointment Arrow -->
+    <a href="#agendamento" class="scroll-to-appointment" id="scrollToAppointment" aria-label="Agendar consulta">
+        <i class="fas fa-calendar-check"></i>
+        <span class="appointment-tooltip">Agende sua consulta</span>
     </a>
 
     <script src="script.js"></script>

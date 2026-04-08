@@ -1344,6 +1344,7 @@ section {
     height: 100%;
     overflow: hidden;
     cursor: ew-resize;
+    user-select: none;
 }
 
 .comparison-before,
@@ -1367,18 +1368,17 @@ section {
 }
 
 .comparison-after {
-    width: 50%;
+    width: 0%; /* INICIA EM 0% - MOSTRA SÓ ANTES */
     border-right: 3px solid var(--white);
     box-shadow: 5px 0 15px rgba(0,0,0,0.2);
     z-index: 2;
     background: var(--white);
+    transition: width 0.1s ease-out;
 }
 
 .comparison-label {
     position: absolute;
     bottom: 20px;
-    background: rgba(0,0,0,0.7);
-    color: var(--white);
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -1387,21 +1387,26 @@ section {
     letter-spacing: 1px;
     z-index: 10;
     backdrop-filter: blur(10px);
+    transition: opacity 0.3s ease;
 }
 
-.comparison-before .comparison-label {
+.label-before {
     left: 20px;
+    background: rgba(0,0,0,0.7);
+    color: var(--white);
 }
 
-.comparison-after .comparison-label {
+.label-after {
     right: 20px;
     background: var(--primary);
+    color: var(--white);
+    opacity: 0; /* COMEÇA INVISÍVEL */
 }
 
 .comparison-handle {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 0%; /* INICIA EM 0% */
     transform: translate(-50%, -50%);
     width: 50px;
     height: 50px;
@@ -1414,7 +1419,7 @@ section {
     z-index: 3;
     cursor: ew-resize;
     border: 4px solid var(--primary);
-    transition: var(--transition-base);
+    transition: transform 0.1s ease-out, left 0.1s ease-out;
 }
 
 .comparison-handle:hover {
@@ -1425,6 +1430,30 @@ section {
 .comparison-handle i {
     color: var(--primary);
     font-size: 1.2rem;
+}
+
+/* Indicador de arraste inicial */
+.comparison-slider::before {
+    content: '← Arraste para ver o depois';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.comparison-slider.dragged::before {
+    opacity: 0;
 }
 
 /* Static comparison for single images */
@@ -2828,6 +2857,11 @@ section {
     .static-item img {
         height: 200px;
     }
+    
+    .comparison-slider::before {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+    }
 }
 
 /* Correção para ícones em mobile */
@@ -2900,4 +2934,213 @@ img, video, iframe, embed, object {
 body {
     overflow-x: hidden;
     position: relative;
+}
+
+/* ============================================
+   SCROLL TO APPOINTMENT ARROW
+   ============================================ */
+
+.scroll-to-appointment {
+    position: fixed;
+    bottom: 110px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--rose) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.4rem;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(212, 165, 116, 0.5);
+    transition: var(--transition-bounce);
+    z-index: 9998;
+    animation: appointment-float 3s infinite ease-in-out;
+    border: 3px solid var(--white);
+}
+
+@keyframes appointment-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.scroll-to-appointment:hover {
+    transform: scale(1.15);
+    box-shadow: 0 10px 30px rgba(212, 165, 116, 0.6);
+}
+
+.scroll-to-appointment.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+}
+
+.appointment-tooltip {
+    position: absolute;
+    right: 70px;
+    background: var(--secondary);
+    color: var(--white);
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-md);
+}
+
+.appointment-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 0 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--secondary);
+}
+
+.scroll-to-appointment:hover .appointment-tooltip {
+    opacity: 1;
+    visibility: visible;
+    right: 75px;
+}
+
+/* ============================================
+   RESULTS COMPACT LAYOUT
+   ============================================ */
+
+.results-grid.compact {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.results-grid.additional {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.results-grid.additional.hidden {
+    display: none;
+}
+
+.results-more {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-show-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    border: 2px solid var(--primary);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--primary);
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.btn-show-more:hover {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--rose) 100%);
+    color: var(--white);
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
+}
+
+.btn-show-more i {
+    transition: var(--transition-base);
+}
+
+.btn-show-more.active i {
+    transform: rotate(180deg);
+}
+
+/* Cards compactos */
+.results-grid.compact .result-card,
+.results-grid.additional .result-card {
+    border-radius: 20px;
+}
+
+.results-grid.compact .comparison-container,
+.results-grid.additional .comparison-container {
+    height: 220px;
+}
+
+.results-grid.compact .result-header,
+.results-grid.additional .result-header {
+    padding: 18px 20px 12px;
+}
+
+.results-grid.compact .result-header h3,
+.results-grid.additional .result-header h3 {
+    font-size: 1rem;
+}
+
+.results-grid.compact .result-tag,
+.results-grid.additional .result-tag {
+    padding: 5px 12px;
+    font-size: 0.7rem;
+}
+
+/* ============================================
+   RESPONSIVE - SCROLL TO APPOINTMENT
+   ============================================ */
+
+@media (max-width: 768px) {
+    .scroll-to-appointment {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        bottom: 95px;
+        right: 20px;
+    }
+    
+    .appointment-tooltip {
+        display: none;
+    }
+    
+    .results-grid.compact,
+    .results-grid.additional {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .results-grid.compact .comparison-container,
+    .results-grid.additional .comparison-container {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-to-appointment {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+        bottom: 90px;
+        right: 15px;
+    }
+    
+    .results-grid.compact,
+    .results-grid.additional {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .results-grid.compact .comparison-container,
+    .results-grid.additional .comparison-container {
+        height: 220px;
+    }
 }

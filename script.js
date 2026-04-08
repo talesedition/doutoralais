@@ -221,8 +221,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const before = slider.querySelector('.comparison-before');
         const after = slider.querySelector('.comparison-after');
         const handle = slider.querySelector('.comparison-handle');
+        const labelBefore = slider.querySelector('.label-before');
+        const labelAfter = slider.querySelector('.label-after');
         
         let isDragging = false;
+        let hasDragged = false;
 
         function updateSlider(x) {
             const rect = slider.getBoundingClientRect();
@@ -231,23 +234,42 @@ document.addEventListener('DOMContentLoaded', function() {
             // Clamp position between 0 and 100
             position = Math.max(0, Math.min(100, position));
             
+            // Atualiza a largura do after (revela o depois)
             after.style.width = position + '%';
             handle.style.left = position + '%';
+            
+            // Controla a opacidade das labels
+            if (position > 10) {
+                labelBefore.style.opacity = Math.max(0, 1 - (position / 30));
+                labelAfter.style.opacity = Math.min(1, position / 30);
+                slider.classList.add('dragged');
+            } else {
+                labelBefore.style.opacity = 1;
+                labelAfter.style.opacity = 0;
+            }
+            
+            if (position > 5) {
+                hasDragged = true;
+                slider.classList.add('dragged');
+            }
         }
 
         // Mouse events
         slider.addEventListener('mousedown', (e) => {
             isDragging = true;
             updateSlider(e.clientX);
+            slider.style.cursor = 'ew-resize';
         });
 
         document.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
+            e.preventDefault();
             updateSlider(e.clientX);
         });
 
         document.addEventListener('mouseup', () => {
             isDragging = false;
+            slider.style.cursor = 'ew-resize';
         });
 
         // Touch events
@@ -265,9 +287,34 @@ document.addEventListener('DOMContentLoaded', function() {
             isDragging = false;
         });
 
-        // Initialize at 50%
-        after.style.width = '50%';
-        handle.style.left = '50%';
+        // Inicializa em 0% (mostra só Antes)
+        after.style.width = '0%';
+        handle.style.left = '0%';
+        labelAfter.style.opacity = '0';
+        
+        // Adiciona hint de arrasto após 2 segundos se não arrastou
+        setTimeout(() => {
+            if (!hasDragged) {
+                // Animação sutil hint
+                setTimeout(() => {
+                    if (!hasDragged) {
+                        after.style.transition = 'width 0.5s ease';
+                        handle.style.transition = 'left 0.5s ease';
+                        after.style.width = '15%';
+                        handle.style.left = '15%';
+                        
+                        setTimeout(() => {
+                            after.style.width = '0%';
+                            handle.style.left = '0%';
+                            setTimeout(() => {
+                                after.style.transition = '';
+                                handle.style.transition = '';
+                            }, 500);
+                        }, 600);
+                    }
+                }, 1000);
+            }
+        }, 2000);
     });
 
     // ============================================
@@ -548,6 +595,75 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.opacity = '1';
         });
     });
+
+    // ============================================
+    // SCROLL TO APPOINTMENT BUTTON
+    // ============================================
+    const scrollToAppointmentBtn = document.getElementById('scrollToAppointment');
+    const appointmentSection = document.getElementById('agendamento');
+    
+    if (scrollToAppointmentBtn && appointmentSection) {
+        // Show/hide button based on scroll position
+        function toggleAppointmentButton() {
+            const scrollY = window.scrollY;
+            const heroHeight = document.querySelector('.hero').offsetHeight;
+            const appointmentOffset = appointmentSection.offsetTop;
+            
+            // Show button after hero section and hide when near appointment section
+            if (scrollY > heroHeight * 0.5 && scrollY < appointmentOffset - window.innerHeight * 0.5) {
+                scrollToAppointmentBtn.classList.remove('hidden');
+            } else {
+                scrollToAppointmentBtn.classList.add('hidden');
+            }
+        }
+        
+        window.addEventListener('scroll', throttle(toggleAppointmentButton, 100), { passive: true });
+        
+        // Initial check
+        toggleAppointmentButton();
+    }
+
+    // ============================================
+    // SHOW MORE RESULTS BUTTON
+    // ============================================
+    const showMoreBtn = document.getElementById('showMoreResults');
+    const additionalResults = document.getElementById('additionalResults');
+    
+    if (showMoreBtn && additionalResults) {
+        showMoreBtn.addEventListener('click', function() {
+            const isHidden = additionalResults.classList.contains('hidden');
+            
+            if (isHidden) {
+                additionalResults.classList.remove('hidden');
+                this.classList.add('active');
+                this.querySelector('span').textContent = 'Ver Menos Resultados';
+                
+                // Initialize comparison sliders for new cards
+                const newSliders = additionalResults.querySelectorAll('.comparison-slider');
+                newSliders.forEach(slider => {
+                    const before = slider.querySelector('.comparison-before');
+                    const after = slider.querySelector('.comparison-after');
+                    const handle = slider.querySelector('.comparison-handle');
+                    const labelAfter = slider.querySelector('.label-after');
+                    
+                    if (after && handle) {
+                        after.style.width = '0%';
+                        handle.style.left = '0%';
+                        if (labelAfter) labelAfter.style.opacity = '0';
+                    }
+                });
+                
+                // Smooth scroll to additional results
+                setTimeout(() => {
+                    additionalResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            } else {
+                additionalResults.classList.add('hidden');
+                this.classList.remove('active');
+                this.querySelector('span').textContent = 'Ver Mais Resultados';
+            }
+        });
+    }
 
     // ============================================
     // CONSOLE MESSAGE
